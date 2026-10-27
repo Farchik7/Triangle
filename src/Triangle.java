@@ -4,27 +4,28 @@ public class Triangle {
     private double b;
     private double c;
 
-    public double takeA() {
+    // Замінено нетиповий префікс take* на standard get*
+    public double getA() {
         return a;
     }
-
-    public void putA(double a) {
+    // Замінено нетиповий префікс put* на standard set*
+    public void setA(double a) {
         this.a = a;
     }
 
-    public double takeB() {
+    public double getB() {
         return b;
     }
 
-    public void putB(double b) {
+    public void setB(double b) {
         this.b = b;
     }
 
-    public double takeC() {
+    public double getC() {
         return c;
     }
 
-    public void putC(double c) {
+    public void setC(double c) {
         this.c = c;
     }
 
@@ -36,20 +37,21 @@ public class Triangle {
 
     public Triangle() {
     }
-
-   public double perim() {
+   
+    // Перейменовано з perim() на perimeter()
+   public double perimeter() {
         return a + b + c;
    }
 
+   // Усунуто дублювання: півпериметр тепер зберігається в змінну p
    public double area() {
-        return Math.sqrt(0.5*perim()*(0.5*perim()-a)*(0.5*perim()-b)*(0.5*perim()-c));
+       double p = 0.5 * perimeter();
+       return Math.sqrt(p * (p - a) * (p - b) * (p - c));
    }
 
-   public  boolean  equilateral(){
-        if (a == b && b == c){
-            return true;
-        } else return false;
-
+   // Змінено назву на isEquilateral() та прибрано зайвий if-else
+   public  boolean  isEquilateral(){
+       return (a == b) && (b == c);
    }
 
     @Override
